@@ -1,4 +1,4 @@
-package es.udc.sistemasinteligentes.ejemplo;
+package es.udc.sistemasinteligentes.g1_42;
 
 import es.udc.sistemasinteligentes.EstrategiaBusqueda;
 import es.udc.sistemasinteligentes.ProblemaBusqueda;
