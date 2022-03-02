@@ -11,6 +11,10 @@ public class Main {
         ProblemaBusqueda aspiradora = new ProblemaAspiradora(estadoInicial);
 
         EstrategiaBusqueda buscador = new Estrategia4();
-        System.out.println(buscador.soluciona(aspiradora));
+
+        Nodo[] solucion = buscador.soluciona(aspiradora);
+        for(Nodo i : solucion){
+            System.out.println(i.toString());
+        }
     }
 }
