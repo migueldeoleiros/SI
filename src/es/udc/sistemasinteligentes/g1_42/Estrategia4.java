@@ -45,6 +45,6 @@ public class Estrategia4 implements EstrategiaBusqueda {
             if (!modificado) throw new Exception("No se ha podido encontrar una solución");
         }
         System.out.println((i++) + " - FIN - " + estadoActual);
-        return (Nodo[]) recorridos.toArray();
+        return recorridos.toArray(new Nodo[0]);
     }
 }
