@@ -14,11 +14,9 @@ public class Nodo{
                 ", " + accion +
                 ')';
     }
-
     public Nodo(Nodo padre, Estado estado, Accion accion) {
         this.padre = padre;
         this.estado = estado;
         this.accion = accion;
     }
-
 }

@@ -26,17 +26,14 @@ public class EstrategiaBusquedaGrafo implements EstrategiaBusqueda{
         while(true) {
             if (frontera.isEmpty())
                 throw new Exception("No se ha podido encontrar una solución");
-
             nodoActual = frontera.remove();
             System.out.println((i++) + " - Estado actual cambiado a " + estadoActual);
-
-            if (p.esMeta(estadoActual)) {
+            if (p.esMeta(estadoActual))
                 return reconstruye_sol(nodoActual);
-            } else {
+            else {
                 System.out.println((i++) + " - " + estadoActual + " no es meta");
                 explorados.add(nodoActual.estado);
-
-                Accion[] accionesDisponibles = p.acciones(nodoActual.estado);
+                Accion[] accionesDisponibles = p.acciones(estadoActual);
                 for (Accion acc : accionesDisponibles) {
                     Estado sc = p.result(estadoActual, acc);
                     nodoActual = new Nodo(nodoActual, sc, acc);
@@ -46,14 +43,13 @@ public class EstrategiaBusquedaGrafo implements EstrategiaBusqueda{
                         System.out.println((i++) + " - " + sc + " NO explorado");
                         estadoActual = sc;
                         System.out.println((i++) + " - Nodo anadido a frontera" + estadoActual);
-                    }else
+                    }
+                    else
                         System.out.println((i++) + " - " + sc + " ya explorado");
-
                 }
             }
         }
     }
-
     public Nodo[] reconstruye_sol(Nodo nodo) {
         ArrayList<Nodo> solucion = new ArrayList<Nodo>();
         Nodo actual = nodo;
