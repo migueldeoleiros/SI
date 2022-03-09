@@ -30,7 +30,7 @@ public class EstrategiaBusquedaGrafo implements EstrategiaBusqueda{
             nodoActual = frontera.remove();
             System.out.println((i++) + " - Estado actual cambiado a " + estadoActual);
 
-            if (p.esMeta(nodoActual.estado)) {
+            if (p.esMeta(estadoActual)) {
                 return reconstruye_sol(nodoActual);
             } else {
                 System.out.println((i++) + " - " + estadoActual + " no es meta");
@@ -38,12 +38,13 @@ public class EstrategiaBusquedaGrafo implements EstrategiaBusqueda{
 
                 Accion[] accionesDisponibles = p.acciones(nodoActual.estado);
                 for (Accion acc : accionesDisponibles) {
-                    Estado sc = p.result(nodoActual.estado, acc);
+                    Estado sc = p.result(estadoActual, acc);
                     nodoActual = new Nodo(nodoActual, sc, acc);
-                    System.out.println((i++) + " - RESULT(" + estadoActual + ","+ acc + ")=" + sc);
+                    System.out.println((i++) + " - RESULT(" + estadoActual + ","+ acc + ")=" +sc);
                     if (!frontera.contains(nodoActual) && !explorados.contains(sc)) {
                         frontera.add(nodoActual);
                         System.out.println((i++) + " - " + sc + " NO explorado");
+                        estadoActual = sc;
                         System.out.println((i++) + " - Nodo anadido a frontera" + estadoActual);
                     }else
                         System.out.println((i++) + " - " + sc + " ya explorado");
