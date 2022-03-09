@@ -27,13 +27,13 @@ public class Estrategia4 implements EstrategiaBusqueda {
             for (Accion acc: accionesDisponibles) {
                 Estado sc = p.result(estadoActual, acc);
                 System.out.println((i++) + " - RESULT(" + estadoActual + ","+ acc + ")=" + sc);
-                nodoActual = new Nodo(nodoActual, estadoActual, acc);
                 if (!explorados.contains(sc)) {
                     estadoActual = sc;
                     System.out.println((i++) + " - " + sc + " NO explorado");
                     explorados.add(estadoActual);
                     modificado = true;
                     System.out.println((i++) + " - Estado actual cambiado a " + estadoActual);
+                    nodoActual = new Nodo(nodoActual, estadoActual, acc);
                     break;
                 }
                 else
