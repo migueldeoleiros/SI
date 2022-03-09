@@ -14,7 +14,7 @@ public class Main {
                                                                                                     ProblemaAspiradora.EstadoAspiradora.PosicionBasura.AMBAS);
         ProblemaBusqueda aspiradora = new ProblemaAspiradora(estadoInicial);
 
-        EstrategiaBusqueda buscador = new Estrategia4();
+        EstrategiaBusqueda buscador = new EstrategiaBusquedaGrafo();
 
         Nodo[] solucion = buscador.soluciona(aspiradora);
         ArrayList<Nodo> listaNodos = new ArrayList<>(Arrays.asList(solucion));
