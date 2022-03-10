@@ -47,6 +47,7 @@ public class EstrategiaBusquedaGrafo implements EstrategiaBusqueda{
                     else
                         System.out.println((i++) + " - " + sc + " ya explorado");
                 }
+                estadoActual = nodoActual.estado;
             }
         }
     }
