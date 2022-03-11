@@ -15,41 +15,39 @@ public class EstrategiaBusquedaGrafo implements EstrategiaBusqueda{
     @Override
     public Nodo[] soluciona(ProblemaBusqueda p) throws Exception{
         Queue<Nodo> frontera = new LinkedList<>();
-        Estado estadoActual = p.getEstadoInicial();
-        Nodo nodoActual = new Nodo(null, estadoActual, null);
+        Nodo nodoActual = new Nodo(null, p.getEstadoInicial(), null);
         frontera.add(nodoActual);
         ArrayList<Estado> explorados = new ArrayList<>();
 
         int i = 1;
-        System.out.println((i++) + " - Empezando búsqueda en " + estadoActual);
+        System.out.println((i++) + " - Empezando búsqueda en " + nodoActual.estado);
 
         while(true) {
             if (frontera.isEmpty())
                 throw new Exception("No se ha podido encontrar una solución");
             nodoActual = frontera.remove();
-            System.out.println((i++) + " - Estado actual cambiado a " + estadoActual);
-            if (p.esMeta(estadoActual))
-                return reconstruye_sol(nodoActual);
+            System.out.println((i++) + " ! Estado actual cambiado a " + nodoActual.estado);
+            if (p.esMeta(nodoActual.estado)) break;
             else {
-                System.out.println((i++) + " - " + estadoActual + " no es meta");
+                System.out.println((i++) + " - " + nodoActual.estado + " no es meta");
                 explorados.add(nodoActual.estado);
-                Accion[] accionesDisponibles = p.acciones(estadoActual);
+                Accion[] accionesDisponibles = p.acciones(nodoActual.estado);
                 for (Accion acc : accionesDisponibles) {
-                    Estado sc = p.result(estadoActual, acc);
-                    nodoActual = new Nodo(nodoActual, sc, acc);
-                    System.out.println((i++) + " - RESULT(" + estadoActual + ","+ acc + ")=" +sc);
-                    if (!frontera.contains(nodoActual) && !explorados.contains(sc)) {
-                        frontera.add(nodoActual);
+                    Estado sc = p.result(nodoActual.estado, acc);
+                    Nodo nodo = new Nodo(nodoActual, sc, acc);
+                    System.out.println((i++) + " - RESULT(" + nodoActual.estado + ","+ acc + ")=" +sc);
+                    if (!frontera.contains(nodo) && !explorados.contains(sc)) {
+                        frontera.add(nodo);
                         System.out.println((i++) + " - " + sc + " NO explorado");
-                        estadoActual = sc;
-                        System.out.println((i++) + " - Nodo anadido a frontera" + estadoActual);
+                        System.out.println((i++) + " - Nodo anadido a frontera" + nodo);
                     }
                     else
                         System.out.println((i++) + " - " + sc + " ya explorado");
                 }
-                estadoActual = nodoActual.estado;
             }
         }
+        System.out.println((i++) + " - FIN - " + nodoActual);
+        return reconstruye_sol(nodoActual);
     }
     public Nodo[] reconstruye_sol(Nodo nodo) {
         ArrayList<Nodo> solucion = new ArrayList<Nodo>();
