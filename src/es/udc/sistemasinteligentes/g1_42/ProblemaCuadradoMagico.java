@@ -10,22 +10,26 @@ import java.util.Objects;
 
 public class ProblemaCuadradoMagico extends ProblemaBusqueda {
     public static class EstadoCuadrado extends Estado {
-        int n;
-        int[][] cuadrado = new int[n][n];
+        private int n;
+        private int[][] cuadrado = new int[n][n];
 
-        public EstadoCuadrado(int[][] cuadrado) {
+        public EstadoCuadrado(int n, int[][] cuadrado) {
+            this.n = n;
             this.cuadrado = cuadrado;
         }
 
         @Override
         public String toString() {
             StringBuilder str = new StringBuilder();
+            str.append("{");
             for(int i=0;i<n;i++) {
+                str.append("{");
                 for (int j = 0; j < n; j++) {
-                    str.append(cuadrado[i][j]).append(" ");
+                    str.append(cuadrado[i][j]).append(",");
                 }
-                str.append("\n");
+                str.append("}");
             }
+            str.append("}");
             return str.toString();
         }
 
@@ -75,7 +79,7 @@ public class ProblemaCuadradoMagico extends ProblemaBusqueda {
 
             matriz[x][y] = num;
 
-            return new EstadoCuadrado(matriz);
+            return new EstadoCuadrado(((EstadoCuadrado) es).n, matriz);
         }
     }
 
@@ -94,11 +98,9 @@ public class ProblemaCuadradoMagico extends ProblemaBusqueda {
                 listA.add(esC.cuadrado[i][j]);
             }
         }
-        for(int i=1;i<=(esC.n^2);i++){
-            for(Integer j : listA){
-                if(!listA.contains(i))
-                    listB.add(i);
-            }
+        for(int i=1;i<= (esC.n * esC.n);i++){
+            if(!listA.contains(i))
+                listB.add(i);
         }
 
         for (int i = 0; i < esC.n; i++) {
