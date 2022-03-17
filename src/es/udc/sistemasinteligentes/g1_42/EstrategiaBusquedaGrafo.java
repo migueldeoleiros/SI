@@ -21,6 +21,7 @@ public class EstrategiaBusquedaGrafo implements EstrategiaBusqueda{
         ArrayList<Estado> explorados = new ArrayList<>();
 
         int i = 1;
+        int nCreados = 1;
         System.out.println((i++) + " - Empezando búsqueda en " + nodoActual.estado);
 
         while(true) {
@@ -36,7 +37,7 @@ public class EstrategiaBusquedaGrafo implements EstrategiaBusqueda{
                 Accion[] accionesDisponibles = p.acciones(nodoActual.estado);
                 for (Accion acc : accionesDisponibles) {
                     Estado sc = p.result(nodoActual.estado, acc);
-                    Nodo nodo = new Nodo(nodoActual, sc, acc);
+                    Nodo nodo = new Nodo(nodoActual, sc, acc); nCreados++;
                     System.out.println((i++) + " - RESULT(" + nodoActual.estado + ","+ acc + ")=" +sc);
                     if (!frontera.contains(nodo) && !explorados.contains(sc)) {
                         frontera.add(nodo);
@@ -49,6 +50,8 @@ public class EstrategiaBusquedaGrafo implements EstrategiaBusqueda{
             }
         }
         System.out.println((i++) + " - FIN - " + nodoActual);
+        System.out.println("Nodos expandidos: " + explorados.size());
+        System.out.println("Nodos creados: " + nCreados);
         return reconstruye_sol(nodoActual);
     }
     public Nodo[] reconstruye_sol(Nodo nodo) {

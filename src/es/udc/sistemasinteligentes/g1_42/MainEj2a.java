@@ -17,7 +17,7 @@ public class MainEj2a {
 //        };
         int[][] matriz = {
             {2,9,4},
-            {0,0,0},
+            {7,5,3},
             {0,0,8},
         };
         ProblemaCuadradoMagico.EstadoCuadrado estadoInicial = new ProblemaCuadradoMagico.EstadoCuadrado(3,matriz);
