@@ -75,11 +75,15 @@ public class ProblemaCuadradoMagico extends ProblemaBusqueda {
 
         @Override
         public Estado aplicaA(Estado es) {
-            int[][] matriz = ((EstadoCuadrado) es).cuadrado;
+            EstadoCuadrado esC = ((EstadoCuadrado) es);
+            int[][] matriz = new int[esC.n][esC.n];
+
+            for(int i = 0 ; i < esC.n ; i++)
+                System.arraycopy(esC.cuadrado[i], 0, matriz[i], 0, esC.n);
 
             matriz[x][y] = num;
 
-            return new EstadoCuadrado(((EstadoCuadrado) es).n, matriz);
+            return new EstadoCuadrado(esC.n, matriz);
         }
     }
 

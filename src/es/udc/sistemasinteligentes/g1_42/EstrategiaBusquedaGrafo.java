@@ -14,7 +14,8 @@ public class EstrategiaBusquedaGrafo implements EstrategiaBusqueda{
 
     @Override
     public Nodo[] soluciona(ProblemaBusqueda p) throws Exception{
-        Queue<Nodo> frontera = new LinkedList<>();
+//        Queue<Nodo> frontera = new LinkedList<>(); //anchura
+        Stack<Nodo> frontera = new Stack<>(); //profundidad
         Nodo nodoActual = new Nodo(null, p.getEstadoInicial(), null);
         frontera.add(nodoActual);
         ArrayList<Estado> explorados = new ArrayList<>();
@@ -25,7 +26,8 @@ public class EstrategiaBusquedaGrafo implements EstrategiaBusqueda{
         while(true) {
             if (frontera.isEmpty())
                 throw new Exception("No se ha podido encontrar una solución");
-            nodoActual = frontera.remove();
+//            nodoActual = frontera.remove(); //anchura
+            nodoActual = frontera.pop(); //profundidad
             System.out.println((i++) + " ! Estado actual cambiado a " + nodoActual.estado);
             if (p.esMeta(nodoActual.estado)) break;
             else {
