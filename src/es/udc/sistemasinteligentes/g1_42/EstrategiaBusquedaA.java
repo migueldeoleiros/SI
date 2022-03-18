@@ -47,14 +47,14 @@ public class EstrategiaBusquedaA implements EstrategiaBusquedaInformada {
                 }
             }
         }
-        System.out.println((i++) + " - FIN - " + nodoActual);
+        System.out.println((i) + " - FIN - " + nodoActual);
         System.out.println("Nodos expandidos: " + explorados.size());
         System.out.println("Nodos creados: " + nCreados);
         return reconstruye_sol(nodoActual);
     }
 
     public Nodo[] reconstruye_sol(Nodo nodo) {
-        ArrayList<Nodo> solucion = new ArrayList<Nodo>();
+        ArrayList<Nodo> solucion = new ArrayList<>();
         Nodo actual = nodo;
         while (actual != null) {
             solucion.add(actual);

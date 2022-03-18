@@ -10,8 +10,8 @@ import java.util.Objects;
 
 public class ProblemaCuadradoMagico extends ProblemaBusqueda {
     public static class EstadoCuadrado extends Estado {
-        private int n;
-        private int[][] cuadrado = new int[n][n];
+        private final int n;
+        private final int[][] cuadrado;
 
         public EstadoCuadrado(int n, int[][] cuadrado) {
             this.n = n;
@@ -69,10 +69,7 @@ public class ProblemaCuadradoMagico extends ProblemaBusqueda {
 
         @Override
         public String toString() {
-            StringBuilder str = new StringBuilder();
-            str.append("(").append("(").append(x).append(",").append(y).append(")").append(num).append(")");
-
-            return str.toString();
+            return "(" + "(" + x + "," + y + ")" + num + ")";
         }
 
         @Override

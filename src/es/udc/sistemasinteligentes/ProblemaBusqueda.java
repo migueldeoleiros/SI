@@ -1,11 +1,7 @@
 package es.udc.sistemasinteligentes;
 
-
-import java.util.Arrays;
-import java.util.function.Predicate;
-
 public abstract class ProblemaBusqueda {
-    private Estado estadoInicial;
+    private final Estado estadoInicial;
     public Estado getEstadoInicial() {
         return estadoInicial;
     }
