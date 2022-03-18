@@ -1,4 +1,4 @@
-package es.udc.sistemasinteligentes;
+package es.udc.sistemasinteligentes.g2_14;
 
 public abstract class Accion {
     @Override

@@ -1,6 +1,4 @@
-package es.udc.sistemasinteligentes.g1_42;
-
-import es.udc.sistemasinteligentes.*;
+package es.udc.sistemasinteligentes.g2_14;
 
 import java.util.ArrayList;
 
@@ -45,6 +43,11 @@ public class Estrategia4 implements EstrategiaBusqueda {
         return reconstruye_sol(nodoActual);
     }
 
+    /**
+     * Calcula el camino para llegar a la solucion dado el nodo final
+     * @param nodo nodo final
+     * @return array con los nodos seguidos para llegar a la solucion
+     */
     public Nodo[] reconstruye_sol(Nodo nodo) {
         ArrayList<Nodo> solucion = new ArrayList<Nodo>();
         Nodo actual = nodo;

@@ -1,8 +1,4 @@
-package es.udc.sistemasinteligentes.g1_42;
-
-import es.udc.sistemasinteligentes.Accion;
-import es.udc.sistemasinteligentes.Estado;
-import es.udc.sistemasinteligentes.ProblemaBusqueda;
+package es.udc.sistemasinteligentes.g2_14;
 
 public class ProblemaAspiradora extends ProblemaBusqueda {
     public static class EstadoAspiradora extends Estado {

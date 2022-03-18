@@ -1,9 +1,4 @@
-package es.udc.sistemasinteligentes.g1_42;
-
-import es.udc.sistemasinteligentes.Accion;
-import es.udc.sistemasinteligentes.Estado;
-import es.udc.sistemasinteligentes.EstrategiaBusqueda;
-import es.udc.sistemasinteligentes.ProblemaBusqueda;
+package es.udc.sistemasinteligentes.g2_14;
 
 import java.util.*;
 
@@ -54,6 +49,12 @@ public class EstrategiaBusquedaGrafo implements EstrategiaBusqueda{
         System.out.println("Nodos creados: " + nCreados);
         return reconstruye_sol(nodoActual);
     }
+
+    /**
+     * Calcula el camino para llegar a la solucion dado el nodo final
+     * @param nodo nodo final
+     * @return array con los nodos seguidos para llegar a la solucion
+     */
     public Nodo[] reconstruye_sol(Nodo nodo) {
         ArrayList<Nodo> solucion = new ArrayList<>();
         Nodo actual = nodo;

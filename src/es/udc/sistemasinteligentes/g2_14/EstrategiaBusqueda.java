@@ -1,6 +1,6 @@
-package es.udc.sistemasinteligentes;
+package es.udc.sistemasinteligentes.g2_14;
 
-import es.udc.sistemasinteligentes.g1_42.Nodo;
+import java.util.ArrayList;
 
 public interface EstrategiaBusqueda {
     /**
@@ -9,4 +9,5 @@ public interface EstrategiaBusqueda {
      * @return Estado meta obtenido
      */
     Nodo[] soluciona(ProblemaBusqueda p) throws Exception;
+
 }

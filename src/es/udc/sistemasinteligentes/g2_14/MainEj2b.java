@@ -1,6 +1,4 @@
-package es.udc.sistemasinteligentes.g1_42;
-
-import es.udc.sistemasinteligentes.*;
+package es.udc.sistemasinteligentes.g2_14;
 
 import java.util.ArrayList;
 import java.util.Arrays;

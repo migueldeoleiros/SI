@@ -1,8 +1,4 @@
-package es.udc.sistemasinteligentes.g1_42;
-
-import es.udc.sistemasinteligentes.Accion;
-import es.udc.sistemasinteligentes.Estado;
-import es.udc.sistemasinteligentes.Heuristica;
+package es.udc.sistemasinteligentes.g2_14;
 
 public class Nodo implements Comparable<Nodo>{
     Nodo padre;
@@ -11,6 +7,12 @@ public class Nodo implements Comparable<Nodo>{
     float coste;
     float f;
 
+    /**
+     * @param padre nodo padre
+     * @param estado estado del nodo
+     * @param accion accion previa
+     * @param heuristica funcion heuristica
+     */
     public Nodo(Nodo padre, Estado estado, Accion accion, Heuristica heuristica) {
         this.padre = padre;
         this.estado = estado;
@@ -33,6 +35,7 @@ public class Nodo implements Comparable<Nodo>{
 
     @Override
     public int compareTo(Nodo nodo) {
+        // el orden se basa en la funcion f
         return nodo.f < this.f ? 1 : -1;
     }
 }

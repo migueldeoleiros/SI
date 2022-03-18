@@ -1,11 +1,14 @@
-package es.udc.sistemasinteligentes.g1_42;
+package es.udc.sistemasinteligentes.g2_14;
 
-import es.udc.sistemasinteligentes.Estado;
-import es.udc.sistemasinteligentes.Heuristica;
-import es.udc.sistemasinteligentes.g1_42.ProblemaCuadradoMagico.*;
+import es.udc.sistemasinteligentes.g2_14.ProblemaCuadradoMagico.*;
 
 public class HeuristicaCuadrado extends Heuristica {
 
+    /**
+     * Calcula la heuristica de un estado
+     * @param e estado a calcular la funcion
+     * @return resultado de la funcion heuristica sobre el estado
+     */
     @Override
     public float evalua(Estado e) {
         EstadoCuadrado esC = (EstadoCuadrado) e;
@@ -17,6 +20,7 @@ public class HeuristicaCuadrado extends Heuristica {
 
         int sumd1 = 0,sumd2=0;
         boolean sized1 = true, sized2 = true;
+        // recorre las diagonales
         for (int i = 0; i < n; i++) {
             sumd1 += cuadrado[i][i];
             if (cuadrado[i][i] == 0) sized1 = false;
@@ -27,6 +31,7 @@ public class HeuristicaCuadrado extends Heuristica {
         result += score(sumd1, maxN, sized1);
         result += score(sumd2, maxN, sized2);
 
+        // recorre las filas y columnas
         for (int i = 0; i < n; i++) {
             int rowSum = 0, colSum = 0;
             boolean sizeRow = true, sizedCol = true;
@@ -38,12 +43,18 @@ public class HeuristicaCuadrado extends Heuristica {
             }
             result += score(rowSum, maxN, sizeRow);
             result += score(colSum, maxN, sizedCol);
-
         }
 
         return result;
     }
 
+    /**
+     * Calcula la puntuacion de una fila,columna o diagonal
+     * @param sum suma de la fila,columna o diagonal
+     * @param maxN numero maximo que puede tener
+     * @param complete si esta completa o no
+     * @return puntuacion asignada a la fila, columan o diagonal
+     */
     private int score(int sum, int maxN, boolean complete){
         if(sum == maxN && complete) return 0;
         else if(sum < maxN && !complete) return 1;

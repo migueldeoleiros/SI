@@ -1,8 +1,4 @@
-package es.udc.sistemasinteligentes.g1_42;
-
-import es.udc.sistemasinteligentes.Accion;
-import es.udc.sistemasinteligentes.Estado;
-import es.udc.sistemasinteligentes.ProblemaBusqueda;
+package es.udc.sistemasinteligentes.g2_14;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,15 +9,26 @@ public class ProblemaCuadradoMagico extends ProblemaBusqueda {
         private final int n;
         private final int[][] cuadrado;
 
+        /**
+         * Constructor del estadoCuadrado
+         * @param n número de filas y columnas
+         * @param cuadrado matriz con los valores de cada casilla
+         */
         public EstadoCuadrado(int n, int[][] cuadrado) {
             this.n = n;
             this.cuadrado = cuadrado;
         }
 
+        /**
+         * @return número de filas y columnas
+         */
         public int getN() {
             return n;
         }
 
+        /**
+         * @return matriz con los valores de cada casilla
+         */
         public int[][] getCuadrado() {
             return cuadrado;
         }
@@ -61,6 +68,11 @@ public class ProblemaCuadradoMagico extends ProblemaBusqueda {
         int y;
         int num;
 
+        /**
+         * @param x coordenada x
+         * @param y coordenada y
+         * @param num numero a introducir
+         */
         public AccionCuadrado(int x, int y, int num) {
             this.x = x;
             this.y = y;
@@ -93,6 +105,10 @@ public class ProblemaCuadradoMagico extends ProblemaBusqueda {
         }
     }
 
+    /**
+     * Constructor del problemaCuadradoMagico
+     * @param estadoInicial estado en el que empezar la búsqueda
+     */
     public ProblemaCuadradoMagico(EstadoCuadrado estadoInicial) {
         super(estadoInicial);
     }
@@ -103,16 +119,19 @@ public class ProblemaCuadradoMagico extends ProblemaBusqueda {
         ArrayList<Integer> listA = new ArrayList<>();
         ArrayList<Integer> listB = new ArrayList<>();
 
+        // mete todos los valores de la matriz en una lista
         for (int i = 0; i < esC.n; i++) {
             for (int j = 0; j < esC.n; j++) {
                 listA.add(esC.cuadrado[i][j]);
             }
         }
+        // hace una lista con los valores que no están en la matriz
         for(int i=1;i<= (esC.n * esC.n);i++){
             if(!listA.contains(i))
                 listB.add(i);
         }
 
+        // crea las posibles acciones para cada casilla vacía
         for (int i = 0; i < esC.n; i++) {
             for (int j = 0; j < esC.n; j++) {
                 if(esC.cuadrado[i][j] == 0){
@@ -137,7 +156,8 @@ public class ProblemaCuadradoMagico extends ProblemaBusqueda {
             sumd1 += esC.cuadrado[i][i];
             sumd2 += esC.cuadrado[i][esC.n-1-i];
         }
-        if(sumd1!=sumd2) //compara que las diagonales sean iguales
+        //compara que las diagonales sumen lo mismo
+        if(sumd1!=sumd2)
             return false;
 
         for (int i = 0; i < esC.n; i++) {
@@ -146,6 +166,7 @@ public class ProblemaCuadradoMagico extends ProblemaBusqueda {
                 rowSum += esC.cuadrado[i][j];
                 colSum += esC.cuadrado[j][i];
             }
+            //compara que las filas y columnas sumen lo mismo
             if (rowSum != colSum || colSum != sumd1)
                 return false;
         }
