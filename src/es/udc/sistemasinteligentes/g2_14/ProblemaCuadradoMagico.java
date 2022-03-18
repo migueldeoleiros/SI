@@ -86,9 +86,22 @@ public class ProblemaCuadradoMagico extends ProblemaBusqueda {
 
         @Override
         public boolean esAplicable(Estado es) {
-            EstadoCuadrado esC = (EstadoCuadrado)es;
+            EstadoCuadrado esC = (EstadoCuadrado) aplicaA(es);
 
-            return esC.cuadrado[x][y] == 0;
+            if (((EstadoCuadrado)es).cuadrado[x][y] != 0) return false;
+
+            int num = esC.getN();
+            int maxN = (num*((num*num)+1))/2;
+
+            int sumd1 = 0,sumd2=0;
+            int rowSum = 0, colSum = 0;
+            for (int i = 0; i < esC.n; i++) {
+                if (maxN < (sumd1 += esC.cuadrado[i][i])) return false;
+                if (maxN < (sumd2 += esC.cuadrado[i][esC.n-1-i])) return false;
+                if (maxN < (rowSum += esC.cuadrado[x][i])) return false;
+                if (maxN < (colSum += esC.cuadrado[i][y])) return false;
+            }
+            return true;
         }
 
         @Override
