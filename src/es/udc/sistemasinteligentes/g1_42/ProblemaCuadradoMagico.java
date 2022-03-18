@@ -18,6 +18,14 @@ public class ProblemaCuadradoMagico extends ProblemaBusqueda {
             this.cuadrado = cuadrado;
         }
 
+        public int getN() {
+            return n;
+        }
+
+        public int[][] getCuadrado() {
+            return cuadrado;
+        }
+
         @Override
         public String toString() {
             StringBuilder str = new StringBuilder();
@@ -70,6 +78,7 @@ public class ProblemaCuadradoMagico extends ProblemaBusqueda {
         @Override
         public boolean esAplicable(Estado es) {
             EstadoCuadrado esC = (EstadoCuadrado)es;
+
             return esC.cuadrado[x][y] == 0;
         }
 
@@ -112,7 +121,8 @@ public class ProblemaCuadradoMagico extends ProblemaBusqueda {
                 if(esC.cuadrado[i][j] == 0){
                     for(Integer item : listB){
                         Accion a = new AccionCuadrado(i,j,item);
-                        listaAcciones.add(a);
+                        if (a.esAplicable(esC))
+                            listaAcciones.add(a);
                     }
                 }
             }
