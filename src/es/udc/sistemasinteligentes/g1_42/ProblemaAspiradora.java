@@ -4,8 +4,6 @@ import es.udc.sistemasinteligentes.Accion;
 import es.udc.sistemasinteligentes.Estado;
 import es.udc.sistemasinteligentes.ProblemaBusqueda;
 
-import java.util.Arrays;
-
 public class ProblemaAspiradora extends ProblemaBusqueda {
     public static class EstadoAspiradora extends Estado {
         public enum PosicionRobot {IZQ, DER};
@@ -94,7 +92,7 @@ public class ProblemaAspiradora extends ProblemaBusqueda {
         }
     }
 
-    //Como toda las acciones se pueden aplicar en cualquier estado y son pocas,
+    //Como todas las acciones se pueden aplicar en cualquier estado y son pocas,
     //podemos mantenerlas en un array para cuando nos las pidan con el método acciones.
     private Accion[] listaAcciones;
 
