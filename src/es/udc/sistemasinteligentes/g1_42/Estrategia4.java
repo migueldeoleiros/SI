@@ -14,7 +14,7 @@ public class Estrategia4 implements EstrategiaBusqueda {
         ArrayList<Estado> explorados = new ArrayList<Estado>();
         Estado estadoActual = p.getEstadoInicial();
         explorados.add(estadoActual);
-        Nodo nodoActual = new Nodo(null, estadoActual, null);
+        Nodo nodoActual = new Nodo(null, estadoActual, null, null);
 
         int i = 1;
 
@@ -33,7 +33,7 @@ public class Estrategia4 implements EstrategiaBusqueda {
                     explorados.add(estadoActual);
                     modificado = true;
                     System.out.println((i++) + " - Estado actual cambiado a " + estadoActual);
-                    nodoActual = new Nodo(nodoActual, estadoActual, acc);
+                    nodoActual = new Nodo(nodoActual, estadoActual, acc, null);
                     break;
                 }
                 else

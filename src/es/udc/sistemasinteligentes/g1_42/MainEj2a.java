@@ -10,15 +10,10 @@ import java.util.Collections;
 public class MainEj2a {
 
     public static void main(String[] args) throws Exception {
-//        int[][] matriz = {
-//            {4,9,2},
-//            {3,5,0},
-//            {0,1,0},
-//        };
         int[][] matriz = {
-            {2,9,4},
-            {7,5,3},
-            {0,0,8},
+            {4,9,2},
+            {3,5,0},
+            {0,1,0},
         };
         ProblemaCuadradoMagico.EstadoCuadrado estadoInicial = new ProblemaCuadradoMagico.EstadoCuadrado(3,matriz);
         ProblemaBusqueda cuadrado = new ProblemaCuadradoMagico(estadoInicial);
